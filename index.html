@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#container {background-color:#CCC; border:1px solid #000; height:400px; margin:50px auto; position:relative; width:800px;}
+		#moving {background-color:#03C; height:100px; position:absolute; top:150px; width:100px;}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="moving"></div>
+	</div>
+	<div id="buttons">
+		<button id="reset">Reset</button>
+		<button id="swing2">Swing - 2 loops</button>
+		<button id="swing3">Swing - 3 loops</button>
+	</div>
+
+	<script src="lib/jquery-1.4.2.js"></script>
+	<script src="jquery.easing.repeater.js"></script>
+	<script>
+		$(function () {
+			var $move = $('#moving'),
+				isLeft = true;
+
+			$('#buttons button').click(function () {
+				var id = this.id;
+				funcs[id] && funcs[id]();
+			});
+
+			$.easingRepeater('swing2', 'swing', 2);
+			$.easingRepeater('swing3', 'swing', 3);
+
+			var funcs = {
+				reset: function () {
+					$move.css('left', 0);
+				},
+				swing2: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 2000, 'swing2');
+					isLeft = !isLeft;
+				},
+				swing3: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 2400, 'swing3');
+					isLeft = !isLeft;
+				}
+			};
+		});
+	</script>
+</body>
+</html>
