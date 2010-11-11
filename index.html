@@ -16,9 +16,16 @@
 		<button id="reset">Reset</button>
 		<button id="swing2">Swing - 2 loops</button>
 		<button id="swing3">Swing - 3 loops</button>
+		<button id="quad2out">Quad (out) - 2 loops</button>
+		<button id="quad2in">Quad (in) - 2 loops</button>
+		<button id="quad2both">Quad (in &amp; out) - 2 loops</button>
+		<button id="elastic">Elastic - normal</button>
+		<button id="elastic2">Elastic - 2 loops</button>
+		<button id="bounce2out">Bounce - 2 loops</button>
 	</div>
 
 	<script src="lib/jquery-1.4.2.js"></script>
+	<script src="lib/jquery.easing.js"></script>
 	<script src="jquery.easing.repeater.js"></script>
 	<script>
 		$(function () {
@@ -30,10 +37,15 @@
 				funcs[id] && funcs[id]();
 			});
 
-			$.easingRepeater('swing2', 'swing', 2);
-			$.easingRepeater('swing3', 'swing', 3);
+			$.createEasingRepeater('swing2', 'jswing', 2);
+			$.createEasingRepeater('swing3', 'jswing', 3);
+			$.createEasingRepeater('quad2out',  'easeOutQuad', 2);
+			$.createEasingRepeater('quad2in',   'easeInQuad', 2);
+			$.createEasingRepeater('quad2both', 'easeInOutQuad', 2);
+			$.createEasingRepeater('elastic2',  'easeOutElastic', 2);
+			$.createEasingRepeater('bounce2out',  'easeOutBounce', 2);
 
-			var funcs = {
+			var funcs = window.funcs = {
 				reset: function () {
 					$move.css('left', 0);
 				},
@@ -42,7 +54,31 @@
 					isLeft = !isLeft;
 				},
 				swing3: function () {
-					$move.animate({left: isLeft ? 700 : 0}, 2400, 'swing3');
+					$move.animate({left: isLeft ? 700 : 0}, 2000, 'swing3');
+					isLeft = !isLeft;
+				},
+				quad2out: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 2000, 'quad2out');
+					isLeft = !isLeft;
+				},
+				quad2in: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 2000, 'quad2in');
+					isLeft = !isLeft;
+				},
+				quad2both: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 2000, 'quad2both');
+					isLeft = !isLeft;
+				},
+				elastic: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 2000, 'easeOutElastic');
+					isLeft = !isLeft;
+				},
+				elastic2: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 4000, 'elastic2');
+					isLeft = !isLeft;
+				},
+				bounce2out: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 3000, 'bounce2out');
 					isLeft = !isLeft;
 				}
 			};

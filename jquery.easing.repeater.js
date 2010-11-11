@@ -7,16 +7,19 @@
 	/**
 	 * Factory function
 	 */
-	$.easingRepeater = function (name, easing, repeat) {
+	$.createEasingRepeater = function (name, easing, repeat) {
 		var steps = repeat * 2 - 1;
-		$.easing[name] = function (p, n, firstNum, diff) {
+		$.easing[name] = function (p, n, firstNum, diff, duration) {
 			var curStep = ~~(p * steps),
 				stepDiff = curStep / steps,
-				newPerc = (p - stepDiff) * steps;
+				newPerc = (p - stepDiff) * steps,
+				newEasing;
+			n = newPerc * duration;
+			newEasing = $.easing[easing](newPerc, n, firstNum, diff, duration);
 			if (curStep % 2) {
-				newPerc = 1 - newPerc;
+				newEasing = 1 - newEasing;
 			}
-			return $.easing[easing](newPerc, n, firstNum, diff);
+			return newEasing;
 		};
 	};
 })(jQuery);
