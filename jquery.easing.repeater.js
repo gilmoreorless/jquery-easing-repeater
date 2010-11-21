@@ -17,7 +17,7 @@
 			n = newPerc * duration;
 			newEasing = $.easing[easing](newPerc, n, firstNum, diff, duration);
 			if (curStep % 2) {
-				newEasing = 1 - newEasing;
+				newEasing = diff - newEasing;
 			}
 			return newEasing;
 		};
