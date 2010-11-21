@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>jQuery Easing Repeater plugin</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#wrapper {margin:50px auto; width:910px;}
+		#container {background-color:#CCC; border:1px solid #000; float:left; height:400px; position:relative; width:400px;}
+		#moving {background-color:#03C; height:100px; position:absolute; top:150px; width:100px;}
+		#graph {background-color:#000; float:right; height:402px; width:500px;}
+		#controls {clear:both; padding-top:20px;}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="container">
+			<div id="moving"></div>
+		</div>
+		<div id="graph"></div>
+
+		<div id="controls">
+			<label>Easing: <select id="easing"></select></label>
+			<label>Run x times: <input id="repeat" value="2" /></label>
+			<!-- TODO: checkboxes for animation properties -->
+			<button id="run">Go</button>
+		</div>
+	</div>
+	
+	<script src="lib/jquery-1.4.2.js"></script>
+	<script src="lib/jquery.easing.js"></script>
+	<script src="jquery.easing.repeater.js"></script>
+	<script>
+    (function(){
+		function doFancyStuff(easing, repeat) {
+			// Clear canvas
+			ctx.fillStyle = 'rgba(0,0,0,0.7)';
+			ctx.fillRect(0,0,500,400);
+			ctx.fillStyle = 'rgba(255,255,255,1)';
+			ctx.beginPath();
+			ctx.moveTo(0, 350);
+
+			// Work out which easing function to use
+			var oldEasing = easing;
+			if (repeat > 1) {
+				easing += '' + repeat;
+				if (!(easing in $.easing)) {
+					$.createEasingRepeater(easing, oldEasing, repeat);
+				}
+			}
+
+			// Draw graph
+			var steps = 1000,
+				progress, e;
+			for (progress = 0; progress < steps; progress++) {
+				e = $.easing[easing]( progress/steps*1, progress, 0, steps, steps );
+				ctx.lineTo( (progress / steps * 500), 350 - (e / steps * 300) );
+				// TODO - draw original easing line underneath
+			}
+			ctx.strokeStyle = 'rgb(255,255,255)';
+			ctx.stroke();
+			ctx.fillStyle = 'rgb(0,0,0)';
+			ctx.strokeStyle = 'rgb(255,255,255)';
+
+			// TODO - output example code for easing repeater creation
+		}
+
+        var options = [],
+            $graph = $('#graph'),
+            canvas = $('<canvas/>').appendTo($graph)[0];
+
+        if (window.G_vmlCanvasManager) {
+            G_vmlCanvasManager.initElement(canvas);
+        }
+
+        var ctx = canvas.getContext('2d');
+
+        canvas.width = 500;
+        canvas.height = 400;
+
+        $.each($.easing, function(name){
+            if (name !== 'def' && typeof this === 'function') {
+                options.push( name );
+            }
+        });
+
+        $('#easing').append('<option>' + options.join('</option><option>') + '</option>');
+		$('#run').click(function () {
+			var easing = $('#easing').val(),
+				repeat = parseInt($('#repeat').val(), 10) || 1;
+			doFancyStuff(easing, repeat);
+		});
+    })();
+	</script>
+</body>
+</html>
