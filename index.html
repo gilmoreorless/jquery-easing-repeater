@@ -22,6 +22,7 @@
 		<button id="elastic">Elastic - normal</button>
 		<button id="elastic2">Elastic - 2 loops</button>
 		<button id="bounce2out">Bounce - 2 loops</button>
+		<button id="back5out">Back - 5 loops</button>
 	</div>
 
 	<script src="lib/jquery-1.4.2.js"></script>
@@ -44,6 +45,7 @@
 			$.createEasingRepeater('quad2both', 'easeInOutQuad', 2);
 			$.createEasingRepeater('elastic2',  'easeOutElastic', 2);
 			$.createEasingRepeater('bounce2out',  'easeOutBounce', 2);
+			$.createEasingRepeater('back5out',  'easeOutBack', 5);
 
 			var funcs = window.funcs = {
 				reset: function () {
@@ -79,6 +81,10 @@
 				},
 				bounce2out: function () {
 					$move.animate({left: isLeft ? 700 : 0}, 3000, 'bounce2out');
+					isLeft = !isLeft;
+				},
+				back5out: function () {
+					$move.animate({left: isLeft ? 700 : 0}, 3000, 'back5out');
 					isLeft = !isLeft;
 				}
 			};

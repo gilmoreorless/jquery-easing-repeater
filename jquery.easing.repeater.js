@@ -1,7 +1,7 @@
 /*!
- * jQuery Easing Repeater plugin
+ * jQuery Easing Repeater plugin v0.1
  *
- * Repeats a given jQuery easing method several times over the course of an animation
+ * Repeats a given jQuery easing method several times over the course of a single animation
  */
 ;(function ($) {
 	/**
