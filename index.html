@@ -4,11 +4,14 @@
 	<title>jQuery Easing Repeater plugin</title>
 	<meta charset="utf-8">
 	<style type="text/css">
+		body {font-family:Arial,Helvetica,sans-serif;}
 		#wrapper {margin:10px auto; width:600px;}
 		#container {height:200px; position:relative; width:100%;}
 		#moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
 		#graph {background-color:#000; height:500px; width:600px;}
-		#controls {clear:both; padding-top:20px;}
+		#controls {border:2px solid #000; background-color:#EEE; margin-bottom:20px; padding:10px;}
+		label {clear:left; display:block; float:left; line-height:1.5em; width:150px;}
+		#repeat {width:50px;}
 	</style>
 </head>
 <body>
@@ -16,104 +19,20 @@
 		<div id="container">
 			<div id="moving"></div>
 		</div>
-		<div id="graph"></div>
-
-		<div id="controls">
-			<label>Easing: <select id="easing"></select></label>
-			<label>Run x times: <input id="repeat" value="2" /></label>
+		
+		<form id="controls" action="#">
+			<div><label for="easing">Easing:</label><select id="easing"></select></div>
+			<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" /></div>
 			<!-- TODO: checkboxes for animation properties -->
 			<button id="run">Go</button>
-		</div>
+		</form>
+
+		<div id="graph"></div>
 	</div>
 	
 	<script src="lib/jquery-1.4.2.js"></script>
 	<script src="lib/jquery.easing.js"></script>
 	<script src="jquery.easing.repeater.js"></script>
-	<script>
-    (function(){
-		function doFancyStuff(easing, repeat) {
-			// Clear canvas
-			ctx.fillStyle = 'rgba(0,0,0,0.8)';
-			ctx.fillRect(0,0,600,500);
-			ctx.fillStyle = 'rgba(255,255,255,1)';
-
-			// Work out which easing function to use
-			var oldEasing = easing;
-			if (repeat > 1) {
-				easing += '' + repeat;
-				if (!(easing in $.easing)) {
-					$.createEasingRepeater(easing, oldEasing, repeat);
-				}
-			}
-
-			// Draw graph
-			var steps = 1000,
-				maxX = 600,
-				maxY = 400,
-				minY = maxY - (canvas.height - maxY),
-				progress, e;
-
-			// Original easing graph (if applicable)
-			if (easing != oldEasing) {
-				ctx.beginPath();
-				ctx.moveTo(0, maxY);
-				for (progress = 0; progress < steps; progress++) {
-					e = $.easing[oldEasing]( progress/steps*1, progress, 0, steps, steps );
-					ctx.lineTo( (progress / steps * maxX), maxY - (e / steps * minY) );
-				}
-				ctx.strokeStyle = '#FFFFFF';
-				ctx.stroke();
-			}
-
-			// New easing graph
-			ctx.beginPath();
-			ctx.moveTo(0, maxY);
-			for (progress = 0; progress < steps; progress++) {
-				e = $.easing[easing]( progress/steps*1, progress, 0, steps, steps );
-				ctx.lineTo( (progress / steps * maxX), maxY - (e / steps * minY) );
-			}
-			ctx.strokeStyle = '#FFFF00';
-			ctx.stroke();
-
-			// Run demo animation
-			var animProps = {};
-			// Start off with just left val, in future support width/height and opacity
-			animProps.left = $move.css('left') == '0px' ? contWidth - $move.width() : 0;
-			$move.animate(animProps, 2000, easing);
-
-
-			// TODO - output example code for easing repeater creation
-		}
-
-        var options = [],
-            $graph = $('#graph'),
-            canvas = $('<canvas/>').appendTo($graph)[0],
-			$container = $('#container'),
-			$move = $('#moving'),
-			contWidth = $container.width();
-
-//        if (window.G_vmlCanvasManager) {
-//            G_vmlCanvasManager.initElement(canvas);
-//        }
-
-        var ctx = canvas.getContext('2d');
-
-        canvas.width = 600;
-        canvas.height = 500;
-
-        $.each($.easing, function(name){
-            if (name !== 'def' && typeof this === 'function') {
-                options.push( name );
-            }
-        });
-
-        $('#easing').append('<option>' + options.join('</option><option>') + '</option>');
-		$('#run').click(function () {
-			var easing = $('#easing').val(),
-				repeat = parseInt($('#repeat').val(), 10) || 1;
-			doFancyStuff(easing, repeat);
-		});
-    })();
-	</script>
+	<script src="demo.js"></script>
 </body>
 </html>
