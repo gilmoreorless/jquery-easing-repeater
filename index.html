@@ -8,10 +8,12 @@
 		#wrapper {margin:10px auto; width:600px;}
 		#container {height:200px; position:relative; width:100%;}
 		#moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
-		#graph {background-color:#000; height:500px; width:600px;}
-		#controls {border:2px solid #000; background-color:#EEE; margin-bottom:20px; padding:10px;}
+		#controls {border:2px solid #000; background-color:#EEE; margin-bottom:20px; padding:10px; -moz-border-radius:5px; -webkit-border-radius:5px;}
 		label {clear:left; display:block; float:left; line-height:1.5em; width:150px;}
 		#repeat {width:50px;}
+		#code {background-color:#000; color:#0F0; display:none; line-height:1.5em; margin-bottom:20px; padding:15px;}
+		#graph {background-color:#000; height:500px; width:600px;}
+		#template {display:none;}
 	</style>
 </head>
 <body>
@@ -22,13 +24,21 @@
 		
 		<form id="controls" action="#">
 			<div><label for="easing">Easing:</label><select id="easing"></select></div>
-			<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" /></div>
+			<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
+			<div><label for="speed">Total time:</label><input type="range" id="speed" value="2000" min="500" max="10000" /></div>
 			<!-- TODO: checkboxes for animation properties -->
-			<button id="run">Go</button>
+			<div><button id="run">Go</button></div>
 		</form>
+
+		<pre id="code"></pre>
 
 		<div id="graph"></div>
 	</div>
+
+<div id="template">
+$.createEasingRepeater('{1}', '{2}', {3});
+$(selector).animate(cssProps, {4}, '{1}');
+</div>
 	
 	<script src="lib/jquery-1.4.2.js"></script>
 	<script src="lib/jquery.easing.js"></script>

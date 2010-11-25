@@ -25,18 +25,26 @@
 	$('#controls').submit(function () {
 		var easing = $('#easing').val(),
 			origRepeat = $('#repeat').val(),
-			repeat = parseInt(origRepeat, 10) || 1;
+			repeat = +origRepeat || 1,
+			origSpeed = $('#speed').val(),
+			speed = +origSpeed || 1000;
 		if (repeat < 1) {
 			repeat = 1;
 		}
-		doFancyStuff(easing, repeat);
+		if (speed < 1000) {
+			speed = 1000;
+		}
+		doFancyStuff(easing, repeat, speed);
 		if (repeat != origRepeat) {
 			$('#repeat').val(repeat);
+		}
+		if (speed != origSpeed) {
+			$('#speed').val(speed);
 		}
 		return false;
 	});
 
-	function doFancyStuff(easing, repeat) {
+	function doFancyStuff(easing, repeat, speed) {
 		// Clear canvas
 		ctx.fillStyle = 'rgba(0,0,0,0.8)';
 		ctx.fillRect(0,0,600,500);
@@ -81,12 +89,29 @@
 		ctx.stroke();
 
 		// Run demo animation
-		var animProps = {};
+		var animProps = {},
+			oldProps;
 		// Start off with just left val, in future support width/height and opacity
 		animProps.left = parseInt($move.css('left'), 10) ? 0 : contWidth - $move.width();
-		$move.animate(animProps, 2000, easing);
+		if ($move.is(':animated') && (oldProps = $move.data('endProps'))) {
+			$move.stop().css(oldProps);
+		}
+		$move.data('endProps', animProps).animate(animProps, speed, easing);
 
-
-		// TODO - output example code for easing repeater creation
+		// Output generation code
+		var $code = $('#code');
+		if (easing != oldEasing) {
+			var template = $.trim(
+				$('#template').text()
+					.replace(/\{1\}/g, easing)
+					.replace('{2}', oldEasing)
+					.replace('{3}', repeat)
+					.replace('{4}', speed)
+			);
+			$code.text(template).show();
+		} else {
+			$code.hide();
+		}
+		
 	}
 })(jQuery);
