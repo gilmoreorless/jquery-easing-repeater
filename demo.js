@@ -71,7 +71,7 @@
 			ctx.beginPath();
 			ctx.moveTo(0, maxY);
 			for (progress = 0; progress < steps; progress++) {
-				e = $.easing[oldEasing]( progress/steps*1, progress, 0, steps, steps );
+				e = $.easing[oldEasing]( progress / steps, progress, 0, steps, steps );
 				ctx.lineTo( (progress / steps * maxX), maxY - (e / steps * minY) );
 			}
 			ctx.strokeStyle = '#FFFFFF';
@@ -81,8 +81,9 @@
 		// New easing graph
 		ctx.beginPath();
 		ctx.moveTo(0, maxY);
+		steps *= 2;
 		for (progress = 0; progress < steps; progress++) {
-			e = $.easing[easing]( progress/steps*1, progress, 0, steps, steps );
+			e = $.easing[easing]( progress / steps, progress, 0, steps, steps );
 			ctx.lineTo( (progress / steps * maxX), maxY - (e / steps * minY) );
 		}
 		ctx.strokeStyle = '#FFFF00';
@@ -90,9 +91,20 @@
 
 		// Run demo animation
 		var animProps = {},
-			oldProps;
-		// Start off with just left val, in future support width/height and opacity
-		animProps.left = parseInt($move.css('left'), 10) ? 0 : contWidth - $move.width();
+			oldProps,
+			grow;
+		// Check for optional animation properties
+		if ($('#anim-left')[0].checked) {
+			animProps.left = parseInt($move.css('left'), 10) ? 0 : contWidth - $move.width();
+		}
+		if ($('#anim-height')[0].checked) {
+			grow = $move.height() == 100;
+			animProps.height = grow ? 180 : 100;
+			animProps.top = grow ? 10 : 50;
+		}
+		if ($('#anim-opacity')[0].checked) {
+			animProps.opacity = 1 - (parseInt($move.css('opacity'), 10) || 0);
+		}
 		if ($move.is(':animated') && (oldProps = $move.data('endProps'))) {
 			$move.stop().css(oldProps);
 		}

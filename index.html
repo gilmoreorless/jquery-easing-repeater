@@ -8,8 +8,14 @@
 		#wrapper {margin:10px auto; width:600px;}
 		#container {height:200px; position:relative; width:100%;}
 		#moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
-		#controls {border:2px solid #000; background-color:#EEE; margin-bottom:20px; padding:10px; -moz-border-radius:5px; -webkit-border-radius:5px;}
-		label {clear:left; display:block; float:left; line-height:1.5em; width:150px;}
+		#controls {margin-bottom:20px; overflow:hidden;}
+		h2 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:center;}
+		.group {border:2px solid #000; background-color:#EEE; padding:10px; width:270px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+		.gleft {float:left;}
+		.gright {float:right;}
+		.group label {display:block; line-height:1.5em;}
+		.gleft label {clear:left; float:left; width:100px;}
+		.gright label {width:200px;}
 		#repeat {width:50px;}
 		#code {background-color:#000; color:#0F0; display:none; line-height:1.5em; margin-bottom:20px; padding:15px;}
 		#graph {background-color:#000; height:500px; width:600px;}
@@ -23,11 +29,19 @@
 		</div>
 		
 		<form id="controls" action="#">
-			<div><label for="easing">Easing:</label><select id="easing"></select></div>
-			<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
-			<div><label for="speed">Total time:</label><input type="range" id="speed" value="2000" min="500" max="10000" /></div>
-			<!-- TODO: checkboxes for animation properties -->
-			<div><button id="run">Go</button></div>
+			<div class="group gleft">
+				<h2>Easing Properties</h2>
+				<div><label for="easing">Easing:</label><select id="easing"></select></div>
+				<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
+				<div><label for="speed">Total time:</label><input type="range" id="speed" value="2000" min="500" max="10000" step="500" /></div>
+				<div><button id="run">Go</button></div>
+			</div>
+			<div class="group gright">
+				<h2>Animation Properties</h2>
+				<div><label><input type="checkbox" name="left" id="anim-left" checked /> Left</label></div>
+				<div><label><input type="checkbox" name="height" id="anim-height" /> Height</label></div>
+				<div><label><input type="checkbox" name="opacity" id="anim-opacity" /> Opacity</label></div>
+			</div>
 		</form>
 
 		<pre id="code"></pre>
