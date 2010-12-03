@@ -9,7 +9,7 @@
 		#container {height:200px; position:relative; width:100%;}
 		#moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
 		#controls {margin-bottom:20px; overflow:hidden;}
-		h2 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:center;}
+		h3 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:center;}
 		.group {border:2px solid #000; background-color:#EEE; padding:10px; width:270px; -moz-border-radius:5px; -webkit-border-radius:5px;}
 		.gleft {float:left;}
 		.gright {float:right;}
@@ -24,20 +24,58 @@
 </head>
 <body>
 	<div id="wrapper">
+		<div id="details">
+			<h1>jQuery Easing Repeater plugin</h1>
+			<h2>What?</h2>
+			<p>
+				This plugin provides a basic factory method that allows you to speed up and repeat
+				an easing function multiple times over the course of a single animation call.
+			</p>
+			<h2>Why?</h2>
+			<p>
+				The idea for this plugin first started with needing to flash a warning message 3 times,
+				by animating the opacity from 0 to 1 to 0 to 1 to 0 to 1.
+				The usual method used to do this in a jQuery-based site is to setup multiple animation calls,
+				either by setting up a series of callbacks, or by queueing them in a long chain
+				(this is the method used by jQuery UI's Pulsate effect).
+			</p>
+			<p>
+				I wanted to have the same effect, but only use a single animation call.
+			</p>
+			<h2>How?</h2>
+			<p>
+				When you create a repeat easing, a new easing function is created that is basically a wrapper around
+				the original easing function. The new function applies some extra calculations to the result of the
+				original function, which are used to speed up, repeat and invert the result. This results in a new
+				easing that repeats the original easing back and forth a set number of times.
+			</p>
+			<p>
+				To create a repeated easing, use the utility method on the jQuery object: <code>$.createEasingRepeater();</code>
+			</p>
+
+			<p>
+				(Details of how it works, and how to use it - note that duration applies to entire animation sequence)
+			</p>
+			<h2>Benefits?</h2>
+			<p>
+				(Two lines of code to write, can be used with any animation function - show, hide, slideDown)
+			</p>
+		</div>
+
 		<div id="container">
 			<div id="moving"></div>
 		</div>
 		
 		<form id="controls" action="#">
 			<div class="group gleft">
-				<h2>Easing Properties</h2>
+				<h3>Easing Properties</h3>
 				<div><label for="easing">Easing:</label><select id="easing"></select></div>
 				<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
 				<div><label for="speed">Total time:</label><input type="range" id="speed" value="2000" min="500" max="10000" step="500" /></div>
 				<div><button id="run">Go</button></div>
 			</div>
 			<div class="group gright">
-				<h2>Animation Properties</h2>
+				<h3>Animation Properties</h3>
 				<div><label><input type="checkbox" name="left" id="anim-left" checked /> Left</label></div>
 				<div><label><input type="checkbox" name="height" id="anim-height" /> Height</label></div>
 				<div><label><input type="checkbox" name="opacity" id="anim-opacity" /> Opacity</label></div>
