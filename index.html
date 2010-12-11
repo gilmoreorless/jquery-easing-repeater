@@ -17,7 +17,9 @@
 		.gleft label {clear:left; float:left; width:100px;}
 		.gright label {width:200px;}
 		#repeat {width:50px;}
-		#code {background-color:#000; color:#0F0; display:none; line-height:1.5em; margin-bottom:20px; padding:15px;}
+		pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:15px;}
+		code {margin:0; padding:2px 5px;}
+		#code {display:none; margin-bottom:20px;}
 		#graph {background-color:#000; height:500px; width:600px;}
 		#template {display:none;}
 	</style>
@@ -49,14 +51,26 @@
 				original function, which are used to speed up, repeat and invert the result. This results in a new
 				easing that repeats the original easing back and forth a set number of times.
 			</p>
+			<h2>Usage</h2>
 			<p>
-				To create a repeated easing, use the utility method on the jQuery object: <code>$.createEasingRepeater();</code>
+				To create a repeated easing, use the utility method on the jQuery object:
 			</p>
-
+			<pre>$.createEasingRepeater('newEasingName', 'oldEasingName', repeatTimes);</pre>
 			<p>
-				(Details of how it works, and how to use it - note that duration applies to entire animation sequence)
+				<code>repeatTimes</code> is an integer that refers to the number of times the animation reaches its <em>end point</em>,
+				not how many animation steps there are. Therefore a value of 2 will run 3 animation steps:
+				once to the end point, then back to the beginning, then to the end point again.
 			</p>
-			<h2>Benefits?</h2>
+			<p>
+				Once the new easing function has been created, you can use it like any other easing by specifying it
+				in an animation call like this:
+			</p>
+			<pre>$(selector).animate(cssProps, duration, 'newEasingName');</pre>
+			<p>
+				<strong>NOTE:</strong> Unlike the jQuery UI Pulsate effect &ndash; which specifies the time duration of
+				each individual animation step &ndash; for this plugin duration is specified for the entire animation sequence.
+			</p>
+			<h2>Benefits</h2>
 			<p>
 				(Two lines of code to write, can be used with any animation function - show, hide, slideDown)
 			</p>
