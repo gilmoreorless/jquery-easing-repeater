@@ -4,7 +4,7 @@
 	<title>jQuery Easing Repeater plugin</title>
 	<meta charset="utf-8">
 	<style type="text/css">
-		body {font-family:Arial,Helvetica,sans-serif;}
+		body {font-family:Arial,Helvetica,sans-serif; font-size:95%;}
 		#wrapper {margin:10px auto; width:600px;}
 		#container {height:200px; position:relative; width:100%;}
 		#moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
@@ -19,9 +19,12 @@
 		#repeat {width:50px;}
 		pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:15px;}
 		code {margin:0; padding:2px 5px;}
-		#code {display:none; margin-bottom:20px;}
+		#democode {display:none; margin-bottom:20px;}
+		ul {margin:1em 0; padding:0 20px;}
 		#graph {background-color:#000; height:500px; width:600px;}
 		#template {display:none;}
+		a {color:#333; text-decoration:underline;}
+		a:hover {text-decoration:none;}
 	</style>
 </head>
 <body>
@@ -65,16 +68,22 @@
 				Once the new easing function has been created, you can use it like any other easing by specifying it
 				in an animation call like this:
 			</p>
-			<pre>$(selector).animate(cssProps, duration, 'newEasingName');</pre>
+			<pre>$(selector).animate(properties, duration, 'newEasingName');</pre>
 			<p>
 				<strong>NOTE:</strong> Unlike the jQuery UI Pulsate effect &ndash; which specifies the time duration of
 				each individual animation step &ndash; for this plugin duration is specified for the entire animation sequence.
 			</p>
 			<h2>Benefits</h2>
-			<p>
-				(Two lines of code to write, can be used with any animation function - show, hide, slideDown)
-			</p>
+			<ul>
+				<li><strong>Size:</strong> The minified source code is only a touch over 300 bytes.</li>
+				<li><strong>Ease of use:</strong> Only one extra line of code is needed to implement in existing projects.</li>
+				<li><strong>Variety:</strong> Repeat easing functions can be used for any animatable property, not just opacity.</li>
+				<li><strong>Per-property:</strong> As of jQuery 1.4 easing functions can be specified per CSS property,
+					so you can use a repeat easing function one just one property in an otherwise normal animation.
+				</li>
+			</ul>
 		</div>
+		<h2>Demonstration</h2>
 
 		<div id="container">
 			<div id="moving"></div>
@@ -96,14 +105,16 @@
 			</div>
 		</form>
 
-		<pre id="code"></pre>
+		<pre id="democode"></pre>
 
 		<div id="graph"></div>
+
+		<p>(Easing graph code shamelessly stolen from <a href="http://james.padolsey.com/demos/jquery/easing/">James Padolsey's Easing Illustrated page</a>)</a></p>
 	</div>
 
 <div id="template">
 $.createEasingRepeater('{1}', '{2}', {3});
-$(selector).animate(cssProps, {4}, '{1}');
+$(selector).animate(properties, {4}, '{1}');
 </div>
 	
 	<script src="lib/jquery-1.4.2.js"></script>
