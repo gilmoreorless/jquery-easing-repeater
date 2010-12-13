@@ -111,7 +111,7 @@
 		$move.data('endProps', animProps).animate(animProps, speed, easing);
 
 		// Output generation code
-		var $code = $('#code');
+		var $code = $('#democode');
 		if (easing != oldEasing) {
 			var template = $.trim(
 				$('#template').text()
