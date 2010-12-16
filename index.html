@@ -17,10 +17,11 @@
 		.gleft label {clear:left; float:left; width:100px;}
 		.gright label {width:200px;}
 		#repeat {width:50px;}
-		pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:15px;}
+		pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:10px;}
 		code {margin:0; padding:2px 5px;}
 		#democode {display:none; margin-bottom:20px;}
 		ul {margin:1em 0; padding:0 20px;}
+		ul ul {margin-top:0.25em;}
 		#graph {background-color:#000; height:500px; width:600px;}
 		#template {display:none;}
 		a {color:#333; text-decoration:underline;}
@@ -58,7 +59,14 @@
 			<p>
 				To create a repeated easing, use the utility method on the jQuery object:
 			</p>
-			<pre>$.createEasingRepeater('newEasingName', 'oldEasingName', repeatTimes);</pre>
+			<pre>$.createEasingRepeater('repeaterName', 'exitingEasingName', repeatTimes);</pre>
+			<p>
+				<code>repeaterName</code> is a custom name that you give the new easing function.
+				This name is then used as the easing when creating animation calls.
+			</p>
+			<p>
+				<code>existingEasingName</code> is the easing function that you want to repeat &ndash; e.g. "easeOutBack".
+			</p>
 			<p>
 				<code>repeatTimes</code> is an integer that refers to the number of times the animation reaches its <em>end point</em>,
 				not how many animation steps there are. Therefore a value of 2 will run 3 animation steps:
@@ -68,18 +76,33 @@
 				Once the new easing function has been created, you can use it like any other easing by specifying it
 				in an animation call like this:
 			</p>
-			<pre>$(selector).animate(properties, duration, 'newEasingName');</pre>
+			<pre>$(selector).animate(properties, duration, 'repeaterName');</pre>
 			<p>
 				<strong>NOTE:</strong> Unlike the jQuery UI Pulsate effect &ndash; which specifies the time duration of
 				each individual animation step &ndash; for this plugin duration is specified for the entire animation sequence.
 			</p>
 			<h2>Benefits</h2>
 			<ul>
-				<li><strong>Size:</strong> The minified source code is only a touch over 300 bytes.</li>
+				<li><strong>Size:</strong> The minified source code is a touch over 300 bytes.</li>
 				<li><strong>Ease of use:</strong> Only one extra line of code is needed to implement in existing projects.</li>
 				<li><strong>Variety:</strong> Repeat easing functions can be used for any animatable property, not just opacity.</li>
 				<li><strong>Per-property:</strong> As of jQuery 1.4 easing functions can be specified per CSS property,
-					so you can use a repeat easing function one just one property in an otherwise normal animation.
+					so you can use a repeat easing function on just one property in an otherwise normal animation.
+				</li>
+				<li><strong>Animation helpers:</strong> In jQuery 1.4.3 all animation helper functions were standardised to accept an easing argument.
+					This means you can use a repeated easing with any of these built-in functions:
+					<ul>
+						<li><a href="http://api.jquery.com/show">show()</a></li>
+						<li><a href="http://api.jquery.com/hide">hide()</a></li>
+						<li><a href="http://api.jquery.com/toggle">toggle()</a></li>
+						<li><a href="http://api.jquery.com/slideUp">slideUp()</a></li>
+						<li><a href="http://api.jquery.com/slideDown">slideDown()</a></li>
+						<li><a href="http://api.jquery.com/slideToggle">slideToggle()</a></li>
+						<li><a href="http://api.jquery.com/fadeIn">fadeIn()</a></li>
+						<li><a href="http://api.jquery.com/fadeOut">fadeOut()</a></li>
+						<li><a href="http://api.jquery.com/fadeToggle">fadeToggle()</a></li>
+						<li><a href="http://api.jquery.com/fadeTo">fadeTo()</a></li>
+					</ul>
 				</li>
 			</ul>
 		</div>
