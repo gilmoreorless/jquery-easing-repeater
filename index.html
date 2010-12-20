@@ -59,7 +59,7 @@
 			<p>
 				To create a repeated easing, use the utility method on the jQuery object:
 			</p>
-			<pre>$.createEasingRepeater('repeaterName', 'exitingEasingName', repeatTimes);</pre>
+			<pre>$.createEasingRepeater('repeaterName', 'existingEasingName', repeatTimes);</pre>
 			<p>
 				<code>repeaterName</code> is a custom name that you give the new easing function.
 				This name is then used as the easing when creating animation calls.
@@ -100,40 +100,43 @@
 						<li><a href="http://api.jquery.com/slideToggle">slideToggle()</a></li>
 						<li><a href="http://api.jquery.com/fadeIn">fadeIn()</a></li>
 						<li><a href="http://api.jquery.com/fadeOut">fadeOut()</a></li>
-						<li><a href="http://api.jquery.com/fadeToggle">fadeToggle()</a></li>
 						<li><a href="http://api.jquery.com/fadeTo">fadeTo()</a></li>
+						<li><a href="http://api.jquery.com/fadeToggle">fadeToggle()</a> (method added in 1.4.4)</li>
 					</ul>
 				</li>
 			</ul>
-		</div>
-		<h2>Demonstration</h2>
+		</div><!-- #details -->
 
-		<div id="container">
-			<div id="moving"></div>
-		</div>
-		
-		<form id="controls" action="#">
-			<div class="group gleft">
-				<h3>Easing Properties</h3>
-				<div><label for="easing">Easing:</label><select id="easing"></select></div>
-				<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
-				<div><label for="speed">Total time:</label><input type="range" id="speed" value="2000" min="500" max="10000" step="500" /></div>
-				<div><button id="run">Go</button></div>
+		<div id="demo">
+			<h2>Demonstration</h2>
+
+			<div id="container">
+				<div id="moving"></div>
 			</div>
-			<div class="group gright">
-				<h3>Animation Properties</h3>
-				<div><label><input type="checkbox" name="left" id="anim-left" checked /> Left</label></div>
-				<div><label><input type="checkbox" name="height" id="anim-height" /> Height</label></div>
-				<div><label><input type="checkbox" name="opacity" id="anim-opacity" /> Opacity</label></div>
-			</div>
-		</form>
 
-		<pre id="democode"></pre>
+			<form id="controls" action="#">
+				<div class="group gleft">
+					<h3>Easing Properties</h3>
+					<div><label for="easing">Easing:</label><select id="easing"></select></div>
+					<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
+					<div><label for="speed">Total time:</label><input type="range" id="speed" value="2000" min="500" max="10000" step="500" /></div>
+					<div><button id="run">Go</button></div>
+				</div>
+				<div class="group gright">
+					<h3>Animation Properties</h3>
+					<div><label><input type="checkbox" name="left" id="anim-left" checked /> Left</label></div>
+					<div><label><input type="checkbox" name="height" id="anim-height" /> Height</label></div>
+					<div><label><input type="checkbox" name="opacity" id="anim-opacity" /> Opacity</label></div>
+				</div>
+			</form>
 
-		<div id="graph"></div>
+			<pre id="democode"></pre>
 
-		<p>(Easing graph code shamelessly stolen from <a href="http://james.padolsey.com/demos/jquery/easing/">James Padolsey's Easing Illustrated page</a>)</a></p>
-	</div>
+			<div id="graph"></div>
+
+			<p>(Easing graph code shamelessly stolen from <a href="http://james.padolsey.com/demos/jquery/easing/">James Padolsey's Easing Illustrated page</a>)</a></p>
+		</div><!-- #demo -->
+	</div><!-- #wrapper -->
 
 <div id="template">
 $.createEasingRepeater('{1}', '{2}', {3});
