@@ -6,9 +6,9 @@
 		$move = $('#moving'),
 		contWidth = $container.width();
 
-//	if (window.G_vmlCanvasManager) {
-//		G_vmlCanvasManager.initElement(canvas);
-//	}
+	if (window.G_vmlCanvasManager) {
+		G_vmlCanvasManager.initElement(canvas);
+	}
 
 	var ctx = canvas.getContext('2d');
 
