@@ -20,8 +20,10 @@
 			options.push( name );
 		}
 	});
-
 	$('#easing').append('<option>' + options.join('</option><option>') + '</option>');
+
+	$(':range').rangeinput();
+
 	$('#controls').submit(function () {
 		var easing = $('#easing').val(),
 			origRepeat = $('#repeat').val(),

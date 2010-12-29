@@ -17,6 +17,7 @@
 		.gleft label {clear:left; float:left; width:100px;}
 		.gright label {width:200px;}
 		#repeat {width:50px;}
+		#run {clear:both; margin-left:100px;}
 		pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:5px;}
 		code {margin:0; padding:2px 5px;}
 		#democode {display:none; margin-bottom:20px;}
@@ -27,6 +28,7 @@
 		a {color:#333; text-decoration:underline;}
 		a:hover {text-decoration:none;}
 	</style>
+	<link rel="stylesheet" type="text/css" href="lib/rangeinput.css" />
 </head>
 <body>
 	<div id="wrapper">
@@ -139,13 +141,14 @@
 	</div><!-- #wrapper -->
 
 <div id="template">
-$.createEasingRepeater('{1}', '{2}', {3});
+$.createEasingRepeater('{1}', '{2}', {3});<br />
 $(selector).animate(<em>properties</em>, {4}, '{1}');
 </div>
 	
 	<script src="lib/jquery-1.4.2.js"></script>
 	<script src="lib/jquery.easing.js"></script>
-	<!--[if IE]><script type="text/javascript" src="lib/excanvas.compiled.js"></script><![endif]-->
+	<script src="lib/rangeinput.min.js"></script>
+	<!--[if IE]><script src="lib/excanvas.compiled.js"></script><![endif]-->
 	<script src="jquery.easing.repeater.js"></script>
 	<script src="demo.js"></script>
 </body>
