@@ -116,13 +116,13 @@
 		var $code = $('#democode');
 		if (easing != oldEasing) {
 			var template = $.trim(
-				$('#template').text()
+				$('#template').html()
 					.replace(/\{1\}/g, easing)
 					.replace('{2}', oldEasing)
 					.replace('{3}', repeat)
 					.replace('{4}', speed)
 			);
-			$code.text(template).show();
+			$code.html(template).show();
 		} else {
 			$code.hide();
 		}

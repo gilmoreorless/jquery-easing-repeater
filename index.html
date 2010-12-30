@@ -3,32 +3,7 @@
 <head>
 	<title>jQuery Easing Repeater plugin</title>
 	<meta charset="utf-8">
-	<style type="text/css">
-		body {font-family:Arial,Helvetica,sans-serif; font-size:95%;}
-		#wrapper {margin:10px auto; width:600px;}
-		#container {height:200px; position:relative; width:100%;}
-		#moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
-		#controls {margin-bottom:20px; overflow:hidden;}
-		h3 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:center;}
-		.group {border:2px solid #000; background-color:#EEE; padding:10px; width:270px; -moz-border-radius:5px; -webkit-border-radius:5px;}
-		.gleft {float:left;}
-		.gright {float:right;}
-		.group label {display:block; line-height:1.5em;}
-		.gleft label {clear:left; float:left; width:100px;}
-		.gright label {width:200px;}
-		#repeat {width:50px;}
-		#run {clear:both; margin-left:100px;}
-		pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:5px;}
-		code {margin:0; padding:2px 5px;}
-		#democode {display:none; margin-bottom:20px;}
-		ul {margin:1em 0; padding:0 20px;}
-		ul ul {margin-top:0.25em;}
-		#graph {background-color:#000; height:500px; width:600px;}
-		#template {display:none;}
-		a {color:#333; text-decoration:underline;}
-		a:hover {text-decoration:none;}
-	</style>
-	<link rel="stylesheet" type="text/css" href="lib/rangeinput.css" />
+	<link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
 	<div id="wrapper">
@@ -103,53 +78,14 @@
 						<li><a href="http://api.jquery.com/fadeIn">fadeIn()</a></li>
 						<li><a href="http://api.jquery.com/fadeOut">fadeOut()</a></li>
 						<li><a href="http://api.jquery.com/fadeTo">fadeTo()</a></li>
-						<li><a href="http://api.jquery.com/fadeToggle">fadeToggle()</a> (method added in 1.4.4)</li>
+						<li><a href="http://api.jquery.com/fadeToggle">fadeToggle()</a> (method added in jQuery 1.4.4)</li>
 					</ul>
 				</li>
 			</ul>
+			<h2>Examples</h2>
+			<p><a href="demo.html">Demonstration</a></p>
+			<p><a href="examples.html">Common use examples</a></p>
 		</div><!-- #details -->
-
-		<div id="demo">
-			<h2>Demonstration</h2>
-
-			<div id="container">
-				<div id="moving"></div>
-			</div>
-
-			<form id="controls" action="#">
-				<div class="group gleft">
-					<h3>Easing Properties</h3>
-					<div><label for="easing">Easing:</label><select id="easing"></select></div>
-					<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
-					<div><label for="speed">Total time:</label><input type="range" id="speed" value="2000" min="500" max="10000" step="500" /></div>
-					<div><button id="run">Go</button></div>
-				</div>
-				<div class="group gright">
-					<h3>Animation Properties</h3>
-					<div><label><input type="checkbox" name="left" id="anim-left" checked /> Left</label></div>
-					<div><label><input type="checkbox" name="height" id="anim-height" /> Height</label></div>
-					<div><label><input type="checkbox" name="opacity" id="anim-opacity" /> Opacity</label></div>
-				</div>
-			</form>
-
-			<pre id="democode"></pre>
-
-			<div id="graph"></div>
-
-			<p>(Easing graph code shamelessly stolen from <a href="http://james.padolsey.com/demos/jquery/easing/">James Padolsey's Easing Illustrated page</a>)</a></p>
-		</div><!-- #demo -->
 	</div><!-- #wrapper -->
-
-<div id="template">
-$.createEasingRepeater('{1}', '{2}', {3});<br />
-$(selector).animate(<em>properties</em>, {4}, '{1}');
-</div>
-	
-	<script src="lib/jquery-1.4.2.js"></script>
-	<script src="lib/jquery.easing.js"></script>
-	<script src="lib/rangeinput.min.js"></script>
-	<!--[if IE]><script src="lib/excanvas.compiled.js"></script><![endif]-->
-	<script src="jquery.easing.repeater.js"></script>
-	<script src="demo.js"></script>
 </body>
 </html>

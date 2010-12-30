@@ -1,0 +1,74 @@
+/*** Basic page styles ***/
+
+body {font-family:Arial,Helvetica,sans-serif; font-size:95%;}
+#wrapper {margin:10px auto; width:800px;}
+#demo {margin:0 auto; width:600px;}
+#container {height:200px; position:relative; width:100%;}
+#moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
+#controls {margin-bottom:20px; overflow:hidden;}
+h3 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:center;}
+.group {border:2px solid #000; background-color:#EEE; padding:10px; width:270px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+.gleft {float:left;}
+.gright {float:right;}
+.group label {display:block; line-height:1.5em;}
+.gleft label {clear:left; float:left; width:100px;}
+.gright label {width:200px;}
+#repeat {width:50px;}
+#run {clear:both; margin-left:100px;}
+pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:5px;}
+code {margin:0; padding:2px 5px;}
+#democode {display:none; margin-bottom:20px;}
+ul {margin:1em 0; padding:0 20px;}
+ul ul {margin-top:0.25em;}
+#graph {background-color:#000; height:500px; width:600px;}
+#template {display:none;}
+a {color:#333; text-decoration:underline;}
+a:hover {text-decoration:none;}
+
+/*** jQuery Tools styles ***/
+
+/* slider root element */
+.slider {
+	background-color:#3C72E6;
+	height:9px;
+	position:relative;
+	cursor:pointer;
+	border:1px solid #333;
+	width:120px;
+	float:left;
+	margin-top:6px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-box-shadow:inset 0 0 8px #000;
+}
+
+/* drag handle */
+.handle {
+	background-color:#fff;
+	height:16px;
+	width:16px;
+	top:-6px;
+	position:absolute;
+	display:block;
+	margin-top:1px;
+	border:1px solid #000;
+	cursor:move;
+	-moz-box-shadow:0 0 6px #000;
+	-webkit-box-shadow:0 0 6px #000;
+	-moz-border-radius:14px;
+	-webkit-border-radius:14px;
+
+}
+
+/* the input field */
+.range {
+	border:1px inset #ddd;
+	float:left;
+	margin:0 0 0 5px;
+	padding:3px 0;
+	text-align:center;
+	width:40px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
