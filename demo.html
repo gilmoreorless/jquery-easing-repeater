@@ -10,6 +10,15 @@
 		<div id="demo">
 			<h1>jQuery Easing Repeater plugin</h1>
 			<h2>Demonstration</h2>
+			<p>
+				This is a customisable demonstration of how the an easing repeater works.
+				The controls on the left let you pick which easing function to use and the repitition parameters,
+				while the options on the right select some basic CSS properties to animate on the blue box below.
+			</p>
+			<p>
+				The graph gives a visualisation of the original easing equation in white and the new repeated equation in yellow.
+				(Easing graph code shamelessly stolen from <a href="http://james.padolsey.com/demos/jquery/easing/">James Padolsey's Easing Illustrated page</a>)
+			</p>
 
 			<div id="container">
 				<div id="moving"></div>
@@ -20,7 +29,7 @@
 					<h3>Easing Properties</h3>
 					<div><label for="easing">Easing:</label><select id="easing"></select></div>
 					<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
-					<div><label for="speed">Total time:</label><input type="range" id="speed" value="2000" min="500" max="10000" step="500" /></div>
+					<div><label for="speed">Total time (ms):</label><input type="range" id="speed" value="2000" min="500" max="10000" step="500" /></div>
 					<div><button id="run">Go</button></div>
 				</div>
 				<div class="group gright">
@@ -34,8 +43,6 @@
 			<pre id="democode"></pre>
 
 			<div id="graph"></div>
-
-			<p>(Easing graph code shamelessly stolen from <a href="http://james.padolsey.com/demos/jquery/easing/">James Padolsey's Easing Illustrated page</a>)</a></p>
 		</div><!-- #demo -->
 	</div><!-- #wrapper -->
 

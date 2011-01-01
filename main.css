@@ -7,14 +7,14 @@ body {font-family:Arial,Helvetica,sans-serif; font-size:95%;}
 #moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
 #controls {margin-bottom:20px; overflow:hidden;}
 h3 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:center;}
-.group {border:2px solid #000; background-color:#EEE; padding:10px; width:270px; -moz-border-radius:5px; -webkit-border-radius:5px;}
-.gleft {float:left;}
-.gright {float:right;}
+.group {border:2px solid #000; background-color:#EEE; padding:10px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+.gleft {float:left; width:300px;}
+.gright {float:right; width:240px;}
 .group label {display:block; line-height:1.5em;}
-.gleft label {clear:left; float:left; width:100px;}
+.gleft label {clear:left; float:left; width:120px;}
 .gright label {width:200px;}
 #repeat {width:50px;}
-#run {clear:both; margin-left:100px;}
+#run {clear:both; margin-left:120px;}
 pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:5px;}
 code {margin:0; padding:2px 5px;}
 #democode {display:none; margin-bottom:20px;}
