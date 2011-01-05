@@ -1,12 +1,22 @@
-/*** Basic page styles ***/
+/*** Basic styles ***/
 
 body {font-family:Arial,Helvetica,sans-serif; font-size:95%;}
+h1 span {font-size:0.7em; font-weight:normal;}
 #wrapper {margin:10px auto; width:800px;}
+pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:5px;}
+code {margin:0; padding:2px 5px;}
+ul {margin:1em 0; padding:0 20px;}
+ul ul {margin-top:0.25em;}
+a {color:#333; text-decoration:underline;}
+a:hover {text-decoration:none;}
+
+/*** Demo page ***/
+
 #demo {margin:0 auto; width:600px;}
 #container {height:200px; position:relative; width:100%;}
 #moving {background-color:#03C; height:100px; position:absolute; top:50px; width:100px;}
 #controls {margin-bottom:20px; overflow:hidden;}
-h3 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:center;}
+form h3 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:center;}
 .group {border:2px solid #000; background-color:#EEE; padding:10px; -moz-border-radius:5px; -webkit-border-radius:5px;}
 .gleft {float:left; width:300px;}
 .gright {float:right; width:240px;}
@@ -15,15 +25,26 @@ h3 {font-size:1em; font-weight:bold; margin:0; line-height:1.5em; text-align:cen
 .gright label {width:200px;}
 #repeat {width:50px;}
 #run {clear:both; margin-left:120px;}
-pre, code {background-color:#000; color:#0F0; font-family:Consolas,'Courier New',monospace; font-size:0.9em; line-height:1.5em; margin:1em 0; padding:5px;}
-code {margin:0; padding:2px 5px;}
 #democode {display:none; margin-bottom:20px;}
-ul {margin:1em 0; padding:0 20px;}
-ul ul {margin-top:0.25em;}
 #graph {background-color:#000; height:500px; width:600px;}
 #template {display:none;}
-a {color:#333; text-decoration:underline;}
-a:hover {text-decoration:none;}
+
+/*** Examples page ***/
+
+#examples h3 {margin-top:2em;}
+.example {position:relative;}
+.example div {height:64px; position:relative; width:164px;}
+.example span {color:#FFF; display:block; position:absolute;}
+.example .arrowLeft {border-color:#FFF transparent #FFF #FFF; border-style:solid; border-width:32px 32px 32px 0;}
+.example .arrowRight {border-color:#FFF #FFF #FFF transparent; border-style:solid; border-width:32px 0 32px 32px; right:0;}
+.example .text {font-size:18px; height:22px; left:32px; line-height:22px; padding:5px 0; text-align:center; top:16px; width:100px;}
+#example1 span {background-color:#000;}
+#example2 span {background-color:#F00;}
+#example3 {height:32px;}
+#example3 span {background-color:#090; top:0;}
+#example3 .arrowLeft, #example3 .arrowRight {border-bottom-width:0;}
+#example3-sub {padding-bottom:16px;}
+#example3-sub .text {background-color:#0F0; color:#000; height:64px; left:0; line-height:64px; top:0; width:164px;}
 
 /*** jQuery Tools styles ***/
 

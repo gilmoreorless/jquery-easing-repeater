@@ -1,4 +1,4 @@
-(function($){
+$(function () {
 	var options = [],
 		$graph = $('#graph'),
 		canvas = $('<canvas/>').appendTo($graph)[0],
@@ -128,4 +128,4 @@
 		}
 		
 	}
-})(jQuery);
+});

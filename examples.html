@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>jQuery Easing Repeater plugin demo</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body>
+	<div id="wrapper">
+		<div id="examples">
+			<h1>
+				jQuery Easing Repeater plugin
+				<span>(<a href="index.html">home</a>)</span>
+			</h1>
+			<h2>Examples</h2>
+
+			<h3>Basic example</h3>
+			<div class="example">
+				<div id="example1">
+					<span class="arrowLeft"></span>
+					<span class="text">Click me</span>
+					<span class="arrowRight"></span>
+				</div>
+			</div>
+			<p>A simple single-property animation with a repeated easeOutBack easing.</p>
+<pre>
+$.createEasingRepeater('back2', 'easeOutBack', 2);
+var isLeft1 = true;
+$('#example1').click(function () {
+	$(this).animate({marginLeft: isLeft1 ? 500 : 0}, 1500, 'back2');
+	isLeft1 = !isLeft1;
+});
+</pre>
+
+			<h3>Per property</h3>
+			<div class="example">
+				<div id="example2">
+					<span class="arrowLeft"></span>
+					<span class="text">Click me</span>
+					<span class="arrowRight"></span>
+				</div>
+			</div>
+			<p>A repeated linear easing on only one CSS property.</p>
+<pre>
+$.createEasingRepeater('lin4', 'linear', 4);
+var isLeft2 = true;
+$('#example2').click(function () {
+	var $this = $(this),
+		$text = $this.find('.text');
+	$text.text('Look at me!');
+	$this.css('opacity', 0).animate({
+		marginLeft: isLeft2 ? 500 : 0,
+		opacity: [1, 'lin4']
+	}, 2500, 'easeInOutQuad', function () {
+		$text.text('Click me');
+	});
+	isLeft2 = !isLeft2;
+});
+</pre>
+
+			<h3>Animation helpers</h3>
+			<div class="example">
+				<div id="example3">
+					<span class="arrowLeft"></span>
+					<span class="text">Click me</span>
+					<span class="arrowRight"></span>
+				</div>
+				<div id="example3-sub">
+					<span class="text">slideToggle</span>
+				</div>
+			</div>
+			<p>A simple single-property animation with a repeated easeOutBack easing.</p>
+<pre>
+$.createEasingRepeater('swing5', 'swing', 5);
+$('#example3').click(function () {
+	$('#example3-sub .text').slideToggle(1500, 'swing5');
+});
+</pre>
+		</div><!-- #examples -->
+	</div><!-- #wrapper -->
+
+	<script src="lib/jquery-1.4.4.min.js"></script>
+	<script src="lib/jquery.easing.js"></script>
+	<script src="jquery.easing.repeater.js"></script>
+	<script src="examples.js"></script>
+</body>
+</html>
