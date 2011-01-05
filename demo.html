@@ -33,7 +33,7 @@
 					<div><label for="easing">Easing:</label><select id="easing"></select></div>
 					<div><label for="repeat">Run x times:</label><input type="number" id="repeat" value="2" min="1" /></div>
 					<div><label for="speed">Total time (ms):</label><input type="range" id="speed" value="2000" min="500" max="10000" step="500" /></div>
-					<div><button id="run">Go</button></div>
+					<div class="submit"><button id="run">Go</button></div>
 				</div>
 				<div class="group gright">
 					<h3>Animation Properties</h3>
@@ -50,8 +50,7 @@
 	</div><!-- #wrapper -->
 
 <div id="template">
-$.createEasingRepeater('{1}', '{2}', {3});
-$(selector).animate(<em>properties</em>, {4}, '{1}');
+$.createEasingRepeater('{1}', '{2}', {3});<br />$(selector).animate(<em>properties</em>, {4}, '{1}');
 </div>
 	
 	<script src="lib/jquery-1.4.4.min.js"></script>
