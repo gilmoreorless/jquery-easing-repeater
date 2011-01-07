@@ -1,19 +1,14 @@
 $(function () {
 	var options = [],
 		$graph = $('#graph'),
-		canvas = $('<canvas/>').appendTo($graph)[0],
 		$container = $('#container'),
 		$move = $('#moving'),
-		contWidth = $container.width();
-
-	if (window.G_vmlCanvasManager) {
-		G_vmlCanvasManager.initElement(canvas);
-	}
-
-	var ctx = canvas.getContext('2d');
-
-	canvas.width = 600;
-	canvas.height = 500;
+		contWidth = $container.width(),
+		paper = Raphael(
+			$graph[0],
+			$graph.width(),
+			$graph.height()
+		);
 
 	$.each($.easing, function(name){
 		if (name !== 'def' && typeof this === 'function') {
@@ -46,11 +41,10 @@ $(function () {
 		return false;
 	});
 
+	var prevSet;
 	function doFancyStuff(easing, repeat, speed) {
 		// Clear canvas
-		ctx.fillStyle = 'rgba(0,0,0,0.8)';
-		ctx.fillRect(0,0,600,500);
-		ctx.fillStyle = 'rgba(255,255,255,1)';
+		prevSet && prevSet.remove();
 
 		// Work out which easing function to use
 		var oldEasing = easing;
@@ -65,31 +59,36 @@ $(function () {
 		var steps = 1000,
 			maxX = 600,
 			maxY = 400,
-			minY = maxY - (canvas.height - maxY),
+			minY = maxY - (paper.height - maxY),
+			set = paper.set(),
+			path = [],
 			progress, e;
 
 		// Original easing graph (if applicable)
 		if (easing != oldEasing) {
-			ctx.beginPath();
-			ctx.moveTo(0, maxY);
-			for (progress = 0; progress < steps; progress++) {
+			path = ['M', 0, maxY];
+			for (progress = 1; progress < steps; progress++) {
 				e = $.easing[oldEasing]( progress / steps, progress, 0, steps, steps );
-				ctx.lineTo( (progress / steps * maxX), maxY - (e / steps * minY) );
+				path = path.concat(['L', (progress / steps * maxX), maxY - (e / steps * minY)]);
 			}
-			ctx.strokeStyle = '#FFFFFF';
-			ctx.stroke();
+			path = paper.path(path).attr({
+				stroke: '#FFFFFF'
+			});
+			set.push(path);
 		}
 
 		// New easing graph
-		ctx.beginPath();
-		ctx.moveTo(0, maxY);
+		path = ['M', 0, maxY];
 		steps *= 2;
-		for (progress = 0; progress < steps; progress++) {
+		for (progress = 1; progress < steps; progress++) {
 			e = $.easing[easing]( progress / steps, progress, 0, steps, steps );
-			ctx.lineTo( (progress / steps * maxX), maxY - (e / steps * minY) );
+			path = path.concat(['L', (progress / steps * maxX), maxY - (e / steps * minY)]);
 		}
-		ctx.strokeStyle = '#FFFF00';
-		ctx.stroke();
+		path = paper.path(path).attr({
+			stroke: '#FFFF00'
+		});
+		set.push(path);
+		prevSet = set;
 
 		// Run demo animation
 		var animProps = {},
