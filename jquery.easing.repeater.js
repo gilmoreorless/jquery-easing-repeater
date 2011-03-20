@@ -1,7 +1,7 @@
 /*!
  * jQuery Easing Repeater plugin v0.1
- * Copyright (c) 2010 Gilmore Davidson
- * https://github.com/gilmoreorless/jquery-easing-repeater
+ * Copyright (c) 2011 Gilmore Davidson
+ * https://gilmoreorless.github.com/jquery-easing-repeater/
  */
 /**
  * @requires jQuery v1.2 or later
