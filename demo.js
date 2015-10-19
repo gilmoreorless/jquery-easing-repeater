@@ -68,7 +68,7 @@ $(function () {
 		if (easing != oldEasing) {
 			path = ['M', 0, maxY];
 			for (progress = 1; progress < steps; progress++) {
-				e = $.easing[oldEasing]( progress / steps, progress, 0, steps, steps );
+				e = steps * $.easing[oldEasing](progress / steps, progress, 0, 1, steps);
 				path = path.concat(['L', (progress / steps * maxX), maxY - (e / steps * minY)]);
 			}
 			path = paper.path(path).attr({
@@ -81,7 +81,7 @@ $(function () {
 		path = ['M', 0, maxY];
 		steps *= 2;
 		for (progress = 1; progress < steps; progress++) {
-			e = $.easing[easing]( progress / steps, progress, 0, steps, steps );
+			e = steps * $.easing[easing](progress / steps, progress, 0, 1, steps);
 			path = path.concat(['L', (progress / steps * maxX), maxY - (e / steps * minY)]);
 		}
 		path = paper.path(path).attr({
